@@ -22,14 +22,14 @@ jobs:
           echo "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin" >> $GITHUB_PATH
           gcc --version
 
-      - name: Build
+      - name: Build for 32-bit
         run: |
           mkdir __build__
           cd __build__
-          cmake -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=gcc -S.. -G Ninja
+          cmake -S.. -T host=x86 -A Win32
           cmake --build .
 
       - name: Run Tests
         working-directory: __build__
         run: |
-          ctest . --output-on-failure
+          ctest . --output-on-failure -C Debug

@@ -196,7 +196,7 @@ int test_printf(void) {
     do_test(buffer, sizeof(buffer), " 0", 2, "%#2x", 0);
     do_test(buffer, sizeof(buffer), " 0", 2, "%#2o", 0);
 
-    /* Pointer */
+    /* Pointer, 32-bit system */
     void* my_pointer = (void*)0x12345678;
     do_test(buffer, sizeof(buffer), "12345678", 8, "%p", my_pointer);
     do_test(buffer, sizeof(buffer), "0X12345678", 10, "0X%p", my_pointer);

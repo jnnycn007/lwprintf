@@ -6,6 +6,13 @@ project(LwLibPROJECT)
 if(NOT PROJECT_IS_TOP_LEVEL)
     add_subdirectory(lwprintf)
 else()
+    # Set default compile flags for GCC
+    if(CMAKE_COMPILER_IS_GNUCXX)
+        message(STATUS "GCC detected, adding compile flags")
+        set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -pedantic -Wall -Wextra")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic -Wall -Wextra")
+    endif(CMAKE_COMPILER_IS_GNUCXX)
+
     enable_testing()
     add_executable(${PROJECT_NAME})
     target_sources(${PROJECT_NAME} PRIVATE
@@ -25,7 +32,6 @@ else()
 
     # Add compile options to the library, which will propagate options to executable through public link
     target_compile_definitions(lwprintf PUBLIC WIN32 _DEBUG CONSOLE LWPRINTF_DEV)
-    target_compile_options(lwprintf PUBLIC -Wall -Wextra -Wpedantic)
 
     # Add test
     add_test(NAME Test COMMAND $<TARGET_FILE:${CMAKE_PROJECT_NAME}>)
