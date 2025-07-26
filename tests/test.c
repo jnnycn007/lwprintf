@@ -41,8 +41,8 @@ size_t tests_passed, tests_failed;
                                                                                                                        \
     } while (0)
 
-
-int test_printf(void) {    
+int
+test_printf(void) {
     double num = 2123213213142.032;
     char buffer[1024];
 
@@ -81,7 +81,7 @@ int test_printf(void) {
     do_test(buffer, sizeof(buffer), "        0.0001234567", 20, "%20.*g", 9, 0.0001234567);
     do_test(buffer, sizeof(buffer), "        0.0001234567", 20, "%20.*g", 10, 0.0001234567);
     do_test(buffer, sizeof(buffer), "        0.0001234567", 20, "%20.*g", 11, 0.0001234567);
-    #if 0
+#if 0
     do_test(buffer, sizeof(buffer), "        0.0001234567", 20, "%20.*g", 12, 0.0001234567);
     do_test(buffer, sizeof(buffer), "        0.0001234567", 20, "%20.*g", 13, 0.0001234567);
     do_test(buffer, sizeof(buffer), "        0.0001234567", 20, "%20.*g", 14, 0.0001234567);
@@ -90,7 +90,7 @@ int test_printf(void) {
     do_test(buffer, sizeof(buffer), "        0.0001234567", 20, "%20.*g", 17, 0.0001234567);
     do_test(buffer, sizeof(buffer), "        0.0001234567", 20, "%20.*g", 18, 0.0001234567);
     do_test(buffer, sizeof(buffer), "        0.0001234567", 20, "%20.*g", 19, 0.0001234567);
-    #endif
+#endif
 
     do_test(buffer, sizeof(buffer), "3.2332", 6, "%.4f", 3.23321321);
     do_test(buffer, sizeof(buffer), "1.23342", 7, "%g", 1.23342);
@@ -149,6 +149,7 @@ int test_printf(void) {
     do_test(buffer, sizeof(buffer), " 1024", 5, "% 4d", 1024);
     do_test(buffer, sizeof(buffer), " 1024", 5, "% 3d", 1024);
     do_test(buffer, sizeof(buffer), " 32.687000", 10, "% 3f", 32.687);
+    do_test(buffer, sizeof(buffer), "33.77", 5, "%.2f", 33.77f);
 
     /* Strings */
     do_test(buffer, sizeof(buffer), "", 0, "%.*s", 0, "Text string 123");
@@ -248,4 +249,5 @@ int test_printf(void) {
     printf("Tests total : %u\r\n", (unsigned)(tests_passed + tests_failed));
     printf("Coverage    : %f\r\n", (float)(tests_passed) / (float)(tests_passed + tests_failed));
 
-    return tests_failed > 0 ? -1 : 0;}
+    return tests_failed > 0 ? -1 : 0;
+}

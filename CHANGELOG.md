@@ -2,7 +2,8 @@
 
 ## Develop
 
-- Rework library CMake with removed INTERFACE type
+- Rework library CMake with removed INTERFACE type and placed with STATIC
+- Rename `struct lwprintf` to `struct lwprintf_s` to not interfere with short names
 
 ## v1.0.6
 

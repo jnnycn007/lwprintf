@@ -66,7 +66,7 @@ extern "C" {
 /**
  * \brief           Forward declaration for LwPRINTF instance
  */
-struct lwprintf;
+struct lwprintf_s;
 
 /**
  * \brief           Callback function for character output
@@ -74,12 +74,12 @@ struct lwprintf;
  * \param[in]       lwobj: LwPRINTF instance
  * \return          `ch` on success, `0` to terminate further string processing
  */
-typedef int (*lwprintf_output_fn)(int ch, struct lwprintf* lwobj);
+typedef int (*lwprintf_output_fn)(int ch, struct lwprintf_s* lwobj);
 
 /**
  * \brief           LwPRINTF instance
  */
-typedef struct lwprintf {
+typedef struct lwprintf_s {
     lwprintf_output_fn out_fn; /*!< Output function for direct print operations */
     void* arg;                 /*!< Custom user argument */
 #if LWPRINTF_CFG_OS || __DOXYGEN__
