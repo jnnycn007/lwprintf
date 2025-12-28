@@ -857,12 +857,14 @@ prv_format(lwprintf_int_t* lwi, va_list arg) {
             lwi->m.flags.uc = 1;
         }
         switch (*fmt) {
+#if LWPRINTF_CFG_SUPPORT_TYPE_FLOAT
             case 'a':
             case 'A':
                 /* Double in hexadecimal notation */
                 (void)va_arg(arg, double);      /* Read argument to ignore it and move to next one */
                 prv_out_str_raw(lwi, "NaN", 3); /* Print string */
                 break;
+#endif /* LWPRINTF_CFG_SUPPORT_TYPE_FLOAT */
             case 'c': lwi->out_fn(lwi, (char)va_arg(arg, int)); break;
 #if LWPRINTF_CFG_SUPPORT_TYPE_INT
             case 'd':
