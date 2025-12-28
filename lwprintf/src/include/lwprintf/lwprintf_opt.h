@@ -116,15 +116,16 @@ extern "C" {
 #endif
 
 /**
- * \brief           Enables `1` or disables `0` support `%f` float type
- *
+ * \brief           Enables `1` or disables `0` support `%f` and  basic float type.
+ * 
+ * This feature is a prerequisite feature be enabled for any floating point types (`%e`, `%E`, `%g`, `%G`, `%a`, `%A`, `%f`, `%F`).
  */
 #ifndef LWPRINTF_CFG_SUPPORT_TYPE_FLOAT
 #define LWPRINTF_CFG_SUPPORT_TYPE_FLOAT 1
 #endif
 
 /**
- * \brief           Enables `1` or disables `0` support for `%e` engineering output type for float numbers
+ * \brief           Enables `1` or disables `0` support for `%e` and `%g` engineering output type for float numbers
  *
  * \note            \ref LWPRINTF_CFG_SUPPORT_TYPE_FLOAT has to be enabled to use this feature
  *
